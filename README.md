@@ -7,13 +7,15 @@ Portfólio profissional estático em HTML5, CSS3 e JavaScript, preparado para Gi
 - `index.html`: conteúdo, navegação e metadados.
 - `style.css`: identidade visual responsiva, movimento reduzido e estados de foco.
 - `data.js`: perfil, competências, equipamentos, temas acadêmicos, diagramas, experiência e documentos.
-- `script.js`: filtros, diagramas ampliáveis, monitor de demonstração e QR Code criado localmente.
+- `script.js`: filtros, diagramas interativos e ampliáveis, monitor de demonstração e QR Code criado localmente.
 - `DESIGN.md`: identidade visual, tokens e padrões de componentes CYBER OPS.
-- `assets/`: marca CYBER OPS, logo institucional Afya e fotografias de referência fornecidas pelo proprietário.
+- `assets/`: marca CYBER OPS, logo institucional Afya, imagens de referência e vídeos decorativos compactados.
 
 ## Integridade do conteúdo
 
-- As imagens em `assets/reference/` são referências visuais fornecidas, não fotos de equipamentos pessoais nem comprovação de experiência prática. Cada cartão descreve as limitações da imagem.
+- As imagens em `assets/reference/` são ilustrativas/referências fornecidas. Não comprovam propriedade, uso pessoal, instalação ou atuação profissional; a imagem de ambiente de saúde também não documenta a experiência de Daniel.
+- O explorador de diagramas permite selecionar cenários conceituais e ampliá-los; nenhum diagrama representa uma instalação específica.
+- Os vídeos em `assets/media/` são fundos abstratos sem áudio, não mostram monitoramento nem instalações reais. São carregados quando a seção se aproxima da tela; pôsteres estáticos permanecem como fallback e a preferência por movimento reduzido desativa a reprodução.
 - Todos os valores do CYBER OPS MONITOR são gerados no navegador para demonstração; não representam uma rede real.
 - Os conteúdos de `ACADEMIC` são temas correlatos. Sem matriz ou histórico acadêmico, não são atribuídos como disciplinas já cursadas.
 - Os projetos do laboratório são demonstrações ou estudos; não são apresentados como resultados de experiência profissional.

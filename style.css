@@ -42,9 +42,13 @@ nav .nav-contact span { margin-left: .35rem; }
 .reading-progress span { display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--blue), var(--cyan)); box-shadow: 0 0 10px rgba(0, 191, 255, .65); transform: scaleX(0); transform-origin: left center; }
 .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); background: transparent; color: var(--cyan); }
 .menu-toggle span { display: block; width: 19px; height: 1px; margin: 6px auto; background: currentColor; }
-.hero { position: relative; min-height: min(760px, calc(100svh - 76px)); max-width: 1600px; margin: auto; padding: 6.5rem max(6.7vw, calc((100% - 1320px) / 2)) 6rem; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(350px, .92fr); align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); }
+.hero { position: relative; isolation: isolate; min-height: min(760px, calc(100svh - 76px)); max-width: 1600px; margin: auto; padding: 6.5rem max(6.7vw, calc((100% - 1320px) / 2)) 6rem; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(350px, .92fr); align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); background: #05070D url("assets/media/cyberops-orbit-poster.jpg") center / cover no-repeat; }
+.ambient-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: .34; filter: saturate(.72) brightness(.76); pointer-events: none; }
+.hero-video { object-position: center 45%; }
+.hero::before { position: absolute; inset: 0; z-index: 1; content: ""; pointer-events: none; background: linear-gradient(90deg, rgba(5, 7, 13, .97) 0%, rgba(5, 7, 13, .88) 45%, rgba(5, 7, 13, .72) 100%), linear-gradient(0deg, #05070D 0%, transparent 32%, rgba(5, 7, 13, .28) 100%); }
 .hero-grid, .contact-grid { position: absolute; inset: 0; pointer-events: none; opacity: .6; background: radial-gradient(ellipse at 82% 55%, rgba(32, 111, 172, .13), transparent 25rem), radial-gradient(ellipse at 14% 12%, rgba(31, 98, 143, .12), transparent 21rem); mask-image: linear-gradient(90deg, #000 0, transparent 95%); }
-.hero-copy { position: relative; z-index: 2; max-width: 680px; }
+.hero-grid { z-index: 2; }
+.hero-copy { position: relative; z-index: 3; max-width: 680px; }
 .eyebrow, .section-index, .education-label, .project-type, .document-type, .contact-card-top, .hero-meta, .visual-caption, .scroll-cue, .gear-category, .academic-count { font: 600 .68rem/1.4 var(--body); letter-spacing: .15em; }
 .eyebrow { color: #b0c1d1; }
 .live-dot, .card-status i, .demo-badge i { display: inline-block; width: 7px; height: 7px; margin-right: .4rem; border-radius: 50%; background: var(--signal); box-shadow: 0 0 12px rgba(0, 191, 255, .55); }
@@ -72,7 +76,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .text-link:hover { color: #b8efff; }
 .hero-meta { display: flex; flex-wrap: wrap; align-items: center; gap: .85rem; margin-top: 3rem; color: #9bb0c4; font-size: .56rem; }
 .hero-meta i, .about-rail i { width: 3px; height: 3px; background: var(--cyan); }
-.hero-visual { position: relative; justify-self: center; width: min(100%, 620px); display: flex; flex-direction: column; gap: .35rem; }
+.hero-visual { position: relative; z-index: 3; justify-self: center; width: min(100%, 620px); display: flex; flex-direction: column; gap: .35rem; }
 .network-map { display: block; width: 100%; height: auto; overflow: visible; }
 .network-link { fill: none; stroke: var(--cyan); stroke-width: 2; stroke-dasharray: 6 8; opacity: .78; }
 .network-node rect { fill: #111827; stroke: rgba(0, 191, 255, .7); stroke-width: 1.5; }
@@ -86,7 +90,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .hero-monitor .monitor-kicker { display: block; color: #91a9bf; font-size: .48rem; letter-spacing: .14em; }
 .hero-monitor b { display: block; margin: .25rem 0; color: #F5F7FA; font-size: .62rem; letter-spacing: .04em; }
 .hero-monitor small { display: block; color: #b8c5d3; font-size: .62rem; }
-.scroll-cue { position: absolute; right: 3.5%; bottom: 1.6rem; display: flex; align-items: center; gap: .65rem; color: #a9bdcf; font-size: .54rem; text-decoration: none; writing-mode: vertical-rl; }
+.scroll-cue { position: absolute; z-index: 4; right: 3.5%; bottom: 1.6rem; display: flex; align-items: center; gap: .65rem; color: #a9bdcf; font-size: .54rem; text-decoration: none; writing-mode: vertical-rl; }
 .scroll-cue span { width: 1px; height: 35px; background: var(--cyan); }
 .section { padding: 7rem max(6.7vw, calc((100% - 1320px) / 2)); border-bottom: 1px solid rgba(107, 166, 207, .1); }
 .section-heading { max-width: 820px; margin-bottom: 2.6rem; }
@@ -126,6 +130,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .gear-card { min-width: 0; overflow: hidden; border: 1px solid rgba(101, 169, 208, .19); background: rgba(9, 20, 33, .85); animation: card-arrive .35s ease-out both; animation-delay: calc(var(--card-order) * 35ms); }
 .gear-image { position: relative; min-height: 220px; aspect-ratio: 16 / 9; margin: 0; overflow: hidden; border-bottom: 1px solid var(--line); background: #0b1826; }
 .gear-image img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.72) contrast(1.05); transition: transform .5s ease, filter .5s ease; }
+.gear-image img.gear-image-contained { object-fit: contain; }
 .gear-card:hover .gear-image img { transform: scale(1.035); filter: saturate(.95) contrast(1.04); }
 .gear-image figcaption { position: absolute; right: .5rem; bottom: .45rem; max-width: 78%; padding: .28rem .4rem; background: rgba(4, 10, 18, .84); color: #d3e0eb; font-size: .54rem; line-height: 1.25; }
 .gear-category { position: absolute; top: .75rem; left: .75rem; padding: .35rem .5rem; background: rgba(4, 12, 20, .87); color: var(--cyan); font-size: .54rem; }
@@ -225,7 +230,10 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .expand-diagram { min-height: 44px; display: block; margin: .2rem 1.3rem 0 auto; padding: .5rem .7rem; border: 1px solid rgba(0, 191, 255, .34); background: transparent; color: var(--cyan); cursor: pointer; font-size: .68rem; }
 .expand-diagram span { margin-left: .4rem; }
 .disclaimer { margin: 1rem 1.35rem 1.3rem; color: #95a9ba; font-size: .67rem; }
-.monitor-section { background: #060c15; }
+.monitor-section { position: relative; isolation: isolate; overflow: hidden; background: #060c15 url("assets/media/cyberops-data-poster.jpg") center / cover no-repeat; }
+.monitor-section::before { position: absolute; inset: 0; z-index: 1; content: ""; pointer-events: none; background: linear-gradient(180deg, rgba(6, 12, 21, .86), rgba(6, 12, 21, .94)); }
+.monitor-video { opacity: .23; filter: saturate(.86) brightness(.74); }
+.monitor-section > :not(.monitor-video) { position: relative; z-index: 2; }
 .monitor-top { display: flex; align-items: end; justify-content: space-between; gap: 1.2rem; }
 .monitor-top .section-heading { margin-bottom: .55rem; }
 .demo-badge { flex: 0 0 auto; margin-bottom: .6rem; padding: .5rem .65rem; border: 1px solid rgba(0, 191, 255, .4); color: #00BFFF; font-size: .58rem; letter-spacing: .08em; }
@@ -269,6 +277,9 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .experience-intro > p { color: var(--cyan); font-size: .63rem; letter-spacing: .14em; }
 .experience-intro h3 { margin: 1.4rem 0 .55rem; font: 600 clamp(2.1rem, 4vw, 3.4rem)/.95 var(--display); }
 .experience-intro span { color: #b1c4d3; font-size: .77rem; }
+.experience-reference { margin: 1.7rem 0 0; border-top: 1px solid rgba(105, 167, 207, .15); }
+.experience-reference img { display: block; width: 100%; aspect-ratio: 3 / 2; margin-top: .8rem; object-fit: cover; filter: saturate(.72) contrast(1.04); }
+.experience-reference figcaption { padding-top: .55rem; color: #a9bdcd; font-size: .62rem; line-height: 1.45; }
 .experience-list { margin: 0; padding: 0; list-style: none; }
 .experience-list li { position: relative; padding: .72rem 0 .72rem 1.4rem; border-bottom: 1px solid rgba(105, 167, 207, .15); color: #c5d2dd; font-size: .81rem; }
 .experience-list li::before { position: absolute; left: 0; top: 1.15rem; width: 5px; height: 5px; content: ""; background: var(--cyan); }
@@ -402,4 +413,5 @@ dialog::backdrop { background: rgba(0, 4, 9, .82); backdrop-filter: blur(5px); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .ambient-video { display: none; }
 }

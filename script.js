@@ -37,6 +37,38 @@ window.addEventListener("resize", scheduleProgressUpdate);
 window.addEventListener("load", scheduleProgressUpdate, { once: true });
 updateReadingProgress();
 
+const ambientVideos = $$(".ambient-video[data-src]");
+function playAmbientVideo(video) {
+  if (reducedMotion || document.hidden || document.body.classList.contains("motion-paused")) return;
+  if (!video.dataset.loaded) {
+    video.src = video.dataset.src;
+    video.load();
+    video.dataset.loaded = "true";
+  }
+  video.play().catch(error => {
+    if (!["AbortError", "NotAllowedError"].includes(error.name)) {
+      console.warn("Não foi possível reproduzir o vídeo decorativo; a imagem de fundo permanece visível.", error);
+    }
+  });
+}
+if ("IntersectionObserver" in window) {
+  const videoObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      video.dataset.inView = String(entry.isIntersecting);
+      if (entry.isIntersecting) playAmbientVideo(video);
+      else video.pause();
+    });
+  }, { rootMargin: "160px 0px" });
+  ambientVideos.forEach(video => videoObserver.observe(video));
+}
+document.addEventListener("visibilitychange", () => {
+  ambientVideos.forEach(video => {
+    if (document.hidden) video.pause();
+    else if (video.dataset.inView === "true") playAmbientVideo(video);
+  });
+});
+
 if ("IntersectionObserver" in window) {
   const navLinks = $$("a[href^='#']", nav);
   const sectionObserver = new IntersectionObserver(entries => {
@@ -80,7 +112,7 @@ function renderGear() {
     <article class="gear-card" style="--card-order:${index}">
       <figure class="gear-image">
         ${item.image
-          ? `<img src="assets/reference/${escapeHTML(item.image)}" alt="${escapeHTML(item.imageAlt)}" loading="lazy" decoding="async" width="640" height="360">`
+          ? `<img${item.imageFit === "contain" ? ' class="gear-image-contained"' : ""} src="assets/reference/${escapeHTML(item.image)}" alt="${escapeHTML(item.imageAlt)}" loading="lazy" decoding="async" width="640" height="360">`
           : `<div class="tool-illustration" aria-hidden="true"><span>${illustration}</span><i></i><i></i><i></i></div>`}
         <figcaption>${escapeHTML(item.imageNote)}</figcaption>
         <span class="gear-category">${escapeHTML(item.category)}</span>
@@ -448,7 +480,7 @@ function updateMonitor() {
 }
 renderMonitor();
 
-/* QR is generated once; pause only affects motion and synthetic chart updates. */
+/* QR is generated once; the pause control also stops ambient videos. */
 const motionButton = $("#motionToggle");
 let monitorTimer;
 function setMotion(enabled) {
@@ -456,6 +488,10 @@ function setMotion(enabled) {
   motionButton.textContent = enabled ? "Pausar animações" : "Retomar animações";
   motionButton.setAttribute("aria-pressed", String(!enabled));
   clearInterval(monitorTimer);
+  ambientVideos.forEach(video => {
+    if (enabled && video.dataset.inView === "true" && !document.hidden) playAmbientVideo(video);
+    else video.pause();
+  });
   if (enabled && !reducedMotion) monitorTimer = setInterval(updateMonitor, 2000);
 }
 if (reducedMotion) {

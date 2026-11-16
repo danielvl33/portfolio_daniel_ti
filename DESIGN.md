@@ -155,8 +155,14 @@ O vocabulário é quadrado e técnico: botões, filtros, cartões e painéis man
 ### Topology Map
 O SVG da página inicial representa uma arquitetura ilustrativa. Linhas tracejadas sugerem fluxo, nós nomeados identificam os papéis da rede e uma legenda informa que não há telemetria ao vivo.
 
+### Interactive Diagrams
+O explorador permite selecionar cenários conceituais e ampliar a topologia escolhida em um diálogo acessível por teclado. As imagens de referência do catálogo e a foto de ambiente de saúde são identificadas como ilustrativas e não documentam equipamentos pessoais, instalações ou atuação profissional de Daniel.
+
 ### Monitor Panels
 Gráficos, indicadores de disponibilidade, recursos e tráfego são simulados e identificados como demonstração. Preserve esse aviso em cada painel e não conecte estado visual a métricas reais sem integração confirmada.
+
+### Ambient Motion
+Os vídeos abstratos fornecidos pelo proprietário funcionam apenas como textura visual de fundo no hero e no painel demonstrativo. Arquivos compactados sem áudio são carregados perto do viewport, pausam fora de tela e pelo controle de movimento, e nunca substituem os pôsteres estáticos. `prefers-reduced-motion` mantém as imagens estáticas e não solicita os vídeos.
 
 ### Digital Contact Card
 O cartão combina os contatos oficiais, links acionáveis e um QR Code local que codifica o endereço `wa.me` informado. Não substitua nem acrescente dados de contato sem confirmação.
