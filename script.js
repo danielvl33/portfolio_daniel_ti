@@ -1,4 +1,4 @@
-/* NEXUS TECH — interações locais, sem envio de dados a serviços externos. */
+/* CYBER OPS — interações locais, sem envio de dados a serviços externos. */
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -21,12 +21,47 @@ document.addEventListener("keydown", event => {
   if (event.key === "Escape") setMenu(false);
 });
 
+const readingProgress = $("#readingProgress");
+let progressFrame = 0;
+function updateReadingProgress() {
+  progressFrame = 0;
+  const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = scrollableHeight > 0 ? Math.min(1, window.scrollY / scrollableHeight) : 0;
+  readingProgress.style.transform = `scaleX(${progress})`;
+}
+function scheduleProgressUpdate() {
+  if (!progressFrame) progressFrame = requestAnimationFrame(updateReadingProgress);
+}
+window.addEventListener("scroll", scheduleProgressUpdate, { passive: true });
+window.addEventListener("resize", scheduleProgressUpdate);
+window.addEventListener("load", scheduleProgressUpdate, { once: true });
+updateReadingProgress();
+
+if ("IntersectionObserver" in window) {
+  const navLinks = $$("a[href^='#']", nav);
+  const sectionObserver = new IntersectionObserver(entries => {
+    const activeEntry = entries
+      .filter(entry => entry.isIntersecting)
+      .reduce((active, entry) => !active || entry.intersectionRatio > active.intersectionRatio ? entry : active, null);
+    if (!activeEntry) return;
+    navLinks.forEach(link => {
+      if (link.hash === `#${activeEntry.target.id}`) link.setAttribute("aria-current", "location");
+      else link.removeAttribute("aria-current");
+    });
+  }, { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.1, 0.25, 0.5] });
+  navLinks.forEach(link => {
+    const section = document.querySelector(link.hash);
+    if (section) sectionObserver.observe(section);
+  });
+}
+
 /* Competências */
 $("#skills").innerHTML = SKILLS.map(skill => `
   <article class="skill-item">
-    <span class="skill-index">${escapeHTML(skill.icon)}</span>
+    <div class="skill-card-top"><span class="skill-index">${escapeHTML(skill.icon)}</span><span class="skill-category">${escapeHTML(skill.category)}</span></div>
     <h3>${escapeHTML(skill.title)}</h3>
     <div class="tag-list">${skill.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join("")}</div>
+    ${skill.note ? `<p class="skill-note">${escapeHTML(skill.note)}</p>` : ""}
   </article>`).join("");
 
 /* Catálogo com filtros; imagens recebidas são referências, não evidência de uso pessoal. */
@@ -69,7 +104,7 @@ filters.addEventListener("click", event => {
 });
 renderGear();
 
-/* Centro acadêmico interativo: disciplinas de formação em Redes de Computadores */
+/* Temas de estudo correlatos; sem documentos, não são tratados como histórico cursado. */
 const academicSearch = $("#academicSearch");
 const academicFilters = $("#academicFilters");
 let academicFilter = "Todos";
@@ -94,7 +129,7 @@ function renderAcademicCards() {
   $("#academic").innerHTML = visible.map(item => `
     <article class="academy-card" data-id="${escapeHTML(item.id)}">
       <button type="button" class="academy-card-toggle" data-id="${escapeHTML(item.id)}" aria-expanded="false">
-        <span class="academic-top"><span class="academic-icon">${escapeHTML(item.icon)}</span><span class="academic-code">${escapeHTML(item.code)}</span></span>
+        <span class="academic-top"><span class="academic-icon">${escapeHTML(item.icon)}</span><span class="academic-code">TEMA CORRELATO</span></span>
         <span class="academy-card-main">
           <span class="academy-tag">${escapeHTML(item.area)}</span>
           <strong>${escapeHTML(item.title)}</strong>
@@ -109,7 +144,7 @@ function renderAcademicCards() {
             <p>${escapeHTML(item.whatIs)}</p>
           </div>
           <div>
-            <h5>Conceitos estudados</h5>
+            <h5>Conceitos relacionados</h5>
             <ul>${item.concepts.map(concept => `<li>${escapeHTML(concept)}</li>`).join("")}</ul>
           </div>
         </div>
@@ -119,7 +154,7 @@ function renderAcademicCards() {
             <p>${escapeHTML(item.practice)}</p>
           </div>
           <div>
-            <h5>Importância para a formação</h5>
+            <h5>Relação com a formação</h5>
             <p>${escapeHTML(item.professional)}</p>
           </div>
         </div>
@@ -131,7 +166,7 @@ function renderAcademicCards() {
           <div class="academy-techs">${item.technologies.map(tech => `<span>${escapeHTML(tech)}</span>`).join("")}</div>
         </div>
       </div>
-    </article>`).join("") || `<div class="academy-empty">Nenhuma disciplina encontrada para os filtros atuais.</div>`;
+    </article>    `).join("") || `<div class="academy-empty">Nenhum tema encontrado para os filtros atuais.</div>`;
 
   $$(".academy-card-toggle", $("#academic")).forEach(button => {
     button.addEventListener("click", () => {
@@ -145,6 +180,11 @@ function renderAcademicCards() {
 
 buildAcademicFilters();
 renderAcademicCards();
+$("#heroStats").innerHTML = [
+  { value: PERFIL.semestresCursados, label: "semestres cursados" },
+  { value: ACADEMIC.length, label: "temas de estudo" },
+  { value: PROJECTS.length, label: "cenários de laboratório" }
+].map(stat => `<div class="hero-stat"><strong>${escapeHTML(stat.value)}</strong><span>${escapeHTML(stat.label)}</span></div>`).join("");
 
 academicSearch.addEventListener("input", renderAcademicCards);
 academicFilters.addEventListener("click", event => {
@@ -212,13 +252,22 @@ diagramDialog.addEventListener("click", event => {
 
 /* Experiência e portfólio: nada está classificado como projeto concluído. */
 $("#exp").innerHTML = EXPERIENCE.map(item => `<li>${escapeHTML(item)}</li>`).join("");
-const projectType = { demo: "DEMONSTRAÇÃO TÉCNICA", study: "ESTUDO EM ANDAMENTO", real: "PROJETO REALIZADO" };
+const projectType = { demo: "LABORATÓRIO · DEMONSTRAÇÃO", study: "LABORATÓRIO · ESTUDO EM ANDAMENTO", real: "EXPERIÊNCIA PRÁTICA" };
 $("#proj").innerHTML = PROJECTS.map(project => `
   <article class="project-item">
     <span class="project-type type-${escapeHTML(project.type)}">${projectType[project.type]}</span>
     <h3>${escapeHTML(project.title)}</h3>
     <p>${escapeHTML(project.description)}</p>
     <div class="tag-list">${project.tags.map(tag => `<span>${escapeHTML(tag)}</span>`).join("")}</div>
+    <details class="project-details">
+      <summary>Ver ficha técnica</summary>
+      <div class="project-specs">
+        <p><b>OBJETIVO</b>${escapeHTML(project.objective)}</p>
+        <p><b>EQUIPAMENTOS DE REFERÊNCIA</b>${project.equipment.map(escapeHTML).join(" · ")}</p>
+        <p><b>TOPOLOGIA</b>${escapeHTML(project.topology)}</p>
+        <p><b>RESULTADO ESPERADO</b>${escapeHTML(project.result)}</p>
+      </div>
+    </details>
     ${project.diagram === "monitor"
       ? `<a href="#monitoramento">Ver painel demonstrativo <span aria-hidden="true">↗</span></a>`
       : `<a href="#diagramas" data-open-diagram="${escapeHTML(project.diagram)}">Explorar diagrama <span aria-hidden="true">↗</span></a>`}
@@ -349,7 +398,7 @@ function qrMatrix(value) {
   return `<svg viewBox="0 0 33 33" role="img" aria-label="QR Code para abrir o WhatsApp de Daniel"><rect width="33" height="33" fill="#fff"/><g fill="#07111d">${rects.join("")}</g></svg>`;
 }
 const whatsappNumber = normalizeWhatsApp(PERFIL.whatsapp);
-$("#whatsappQr").innerHTML = qrMatrix(whatsappNumber || "5573998667504");
+$("#whatsappQr").innerHTML = qrMatrix(`https://wa.me/${whatsappNumber || "5573998667504"}`);
 
 /* Painel sintético: valores identificados como simulação em cada área. */
 let seed = 41;

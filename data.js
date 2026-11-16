@@ -1,21 +1,27 @@
-/* Conteúdo do portfólio NEXUS TECH. Mantenha fatos e demonstrações identificados. */
+/* Conteúdo do portfólio CYBER OPS. Mantenha fatos e demonstrações identificados. */
 const PERFIL = {
   nome: "Daniel Lopes Soares",
-  area: "Redes & Infraestrutura de TI",
+  area: "Especialista em Redes e Infraestrutura de TI",
+  localizacao: "Guanambi — Bahia — Brasil",
   whatsapp: "5573998667504",
   telefone: "(73) 99866-7504",
   email: "danielvl12349@gmail.com",
+  github: "https://github.com/danielvl33",
+  portfolio: "https://danielvl33.github.io/portfolio_daniel_ti/",
+  instituicao: "Afya",
+  formacao: "Graduação em Redes de Computadores — em andamento",
+  semestres: "5 semestres cursados",
+  semestresCursados: 5,
   curriculo: ""
 };
 
 const SKILLS = [
-  { title: "Redes", icon: "01", tags: ["TCP/IP", "VLAN", "DHCP", "DNS", "NAT", "LAN", "WAN", "Roteamento", "Cabeamento"] },
-  { title: "MikroTik", icon: "02", tags: ["RouterOS", "RB4011", "RB750", "RB760", "Firewall", "Controle de banda", "Balanceamento", "Redundância"] },
-  { title: "Segurança", icon: "03", tags: ["Fortinet", "Firewall", "Regras de acesso", "Proteção de redes"] },
-  { title: "Conectividade", icon: "04", tags: ["Wi-Fi Mesh", "Deco M5", "Deco X50 Outdoor", "Otimização de canais"] },
-  { title: "Suporte", icon: "05", tags: ["Windows", "GLPI", "Computadores", "Impressoras", "Periféricos"] },
-  { title: "Monitoramento", icon: "06", tags: ["Zabbix · em aprendizado", "Disponibilidade", "Latência", "Análise"] },
-  { title: "Desenvolvimento", icon: "07", tags: ["HTML", "CSS", "JavaScript", "Git Pages", "Automação"] }
+  { title: "Redes de computadores", icon: "01", category: "REDES", tags: ["TCP/IP", "DHCP", "DNS", "VLAN", "NAT", "Endereçamento IP", "Roteamento", "Switching", "Wi-Fi", "Topologias"] },
+  { title: "Equipamentos e infraestrutura", icon: "02", category: "INFRAESTRUTURA", tags: ["MikroTik", "RB4011", "RB750", "RB760", "Fortinet", "Switches", "Deco M5", "Deco X50", "Access Points", "Cabeamento estruturado"] },
+  { title: "Segurança e conectividade", icon: "03", category: "SEGURANÇA", tags: ["Firewall", "Controle de banda", "Bloqueio de sites", "Balanceamento de links", "Redundância", "Segmentação de rede"] },
+  { title: "Suporte técnico", icon: "04", category: "SUPORTE", tags: ["Windows", "Configuração de impressoras", "Compartilhamento em rede", "Diagnóstico de conectividade", "GLPI", "Computadores e periféricos"] },
+  { title: "Monitoramento", icon: "05", category: "EM DESENVOLVIMENTO", tags: ["Zabbix — estudos em andamento", "Disponibilidade", "Latência", "Análise de conectividade"] },
+  { title: "Desenvolvimento", icon: "06", category: "CONHECIMENTOS", tags: ["HTML", "CSS", "JavaScript", "GitHub Pages"], note: "Conhecimentos complementares; não apresentados como experiência profissional avançada." }
 ];
 
 const GEAR_CATEGORIES = ["Todos", "Roteamento", "Segurança", "Wi-Fi", "Infraestrutura", "Fibra óptica", "Servidores", "Ferramentas", "Suporte"];
@@ -30,14 +36,26 @@ const GEAR = [
   { category: "Suporte", title: "Periféricos & suporte", maker: "Diversos fabricantes", image: "support-reference.jpg", items: ["Impressoras", "Scanners", "Monitores", "Estações de trabalho", "Telefones IP"], description: "Dispositivos de usuário final e periféricos conectados à infraestrutura.", functions: ["Configuração e conectividade", "Compartilhamento em rede", "Suporte e diagnóstico"], use: "Atendimento técnico e estações de trabalho.", imageAlt: "Estação de trabalho e periféricos, fotografia de referência", imageNote: "Imagem ilustrativa fornecida; não retrata necessariamente o proprietário." }
 ];
 
-const ACADEMIC_CATEGORIES = ["Todos", "Governança", "Sistemas", "Redes", "Dados", "Programação", "Gestão", "Segurança"];
+const ACADEMIC_CATEGORIES = [
+  "Todos",
+  "Fundamentos de redes",
+  "Infraestrutura de TI",
+  "Segurança da informação",
+  "Sistemas operacionais",
+  "Administração de servidores",
+  "Banco de dados",
+  "Programação",
+  "Governança e auditoria",
+  "Telecomunicações",
+  "Processamento e gerenciamento de sistemas"
+];
 
 const ACADEMIC = [
   {
     id: "governanca",
     title: "Governança e Auditoria em Tecnologia da Informação",
     code: "ON.A - 494796",
-    area: "Governança",
+    area: "Governança e auditoria",
     icon: "G",
     summary: "Gestão de tecnologia, risco, controles e confiabilidade dos ambientes digitais.",
     whatIs: "Governança de TI é o conjunto de práticas, regras, responsabilidades e processos que orientam a utilização da tecnologia dentro de uma organização.",
@@ -52,7 +70,7 @@ const ACADEMIC = [
     id: "sistemas-operacionais",
     title: "Laboratório de Sistemas Operacionais",
     code: "ON.A - 494800",
-    area: "Sistemas",
+    area: "Sistemas operacionais",
     icon: "OS",
     summary: "Fundamentos de administração, diagnóstico e manutenção de sistemas operacionais.",
     whatIs: "Sistema operacional é o software responsável por gerir o hardware, os programas e os recursos do computador ou servidor.",
@@ -67,7 +85,7 @@ const ACADEMIC = [
     id: "multisservicos",
     title: "Redes de Multisserviços",
     code: "ON.A - 494802",
-    area: "Redes",
+    area: "Telecomunicações",
     icon: "NET",
     summary: "Estruturação de redes que suportam voz, vídeo, dados e serviços de comunicação simultaneamente.",
     whatIs: "Redes de multisserviços são redes que suportam diferentes tipos de tráfego sobre a mesma infraestrutura, mantendo organização e desempenho.",
@@ -82,7 +100,7 @@ const ACADEMIC = [
     id: "estrutura-dados",
     title: "Estrutura de Dados",
     code: "ON.A - 494263",
-    area: "Dados",
+    area: "Processamento e gerenciamento de sistemas",
     icon: "DS",
     summary: "Organização, armazenamento e manipulação eficiente das informações em sistemas.",
     whatIs: "Estrutura de dados é a forma como as informações são organizadas para facilitar acesso, processamento e uso em algoritmos.",
@@ -97,7 +115,7 @@ const ACADEMIC = [
     id: "esg",
     title: "ESG",
     code: "ON.A - 499768",
-    area: "Gestão",
+    area: "Governança e auditoria",
     icon: "ESG",
     summary: "Sustentabilidade, responsabilidade social e governança aplicada à tecnologia.",
     whatIs: "ESG reúne critérios ambientais, sociais e de governança para orientar práticas responsáveis e sustentáveis dentro das organizações.",
@@ -112,14 +130,14 @@ const ACADEMIC = [
     id: "competencia-relacional",
     title: "Competência Relacional",
     code: "-",
-    area: "Gestão",
+    area: "Processamento e gerenciamento de sistemas",
     icon: "CR",
     summary: "Comunicação, trabalho em equipe, inteligência emocional e relacionamento profissional.",
     whatIs: "Competência relacional refere-se às habilidades de comunicação, cooperação e convívio profissional dentro de equipes e com usuários.",
     concepts: ["Comunicação profissional", "Relacionamento interpessoal", "Trabalho em equipe", "Inteligência emocional", "Resolução de conflitos", "Colaboração", "Comunicação com usuários e clientes"],
     practice: "Essas competências são essenciais para trabalhar em suporte técnico, infraestrutura de redes e também em colaboração com gestores, usuários e equipes multidisciplinares.",
     professional: "Profissionais de TI dependem muito de uma comunicação clara, empatia e capacidade de trabalho em equipe para dar suporte eficiente e manter bons relacionamentos internos.",
-    relation: "Relaciona-se diretamente com suporte, atendimento, gestão de usuários, travamento de conflitos e trabalho em ambientes colaborativos.",
+    relation: "Relaciona-se diretamente com suporte, atendimento, gestão de usuários, resolução de conflitos e trabalho em ambientes colaborativos.",
     technologies: ["Comunicação", "Suporte", "Colaboração", "Pesquisa e resolução", "Atendimento"],
     theme: "gestao"
   },
@@ -127,7 +145,7 @@ const ACADEMIC = [
     id: "banco-dados",
     title: "Introdução a Banco de Dados",
     code: "-",
-    area: "Dados",
+    area: "Banco de dados",
     icon: "DB",
     summary: "Organização, armazenamento e consulta de informações de maneira estruturada.",
     whatIs: "Banco de dados é o conjunto de dados organizados de forma lógica para serem armazenados, acessados e manipulados de maneira segura e eficiente.",
@@ -157,7 +175,7 @@ const ACADEMIC = [
     id: "arquitetura-computadores",
     title: "Organização e Arquitetura de Computadores",
     code: "-",
-    area: "Sistemas",
+    area: "Infraestrutura de TI",
     icon: "ARQ",
     summary: "Funcionamento interno dos computadores, periféricos e componentes de hardware.",
     whatIs: "Arquitetura de computadores estuda como os componentes do hardware trabalham juntos para processar, armazenar e transmitir dados.",
@@ -187,7 +205,7 @@ const ACADEMIC = [
     id: "redes-computadores",
     title: "Redes de Computadores",
     code: "-",
-    area: "Redes",
+    area: "Fundamentos de redes",
     icon: "RC",
     summary: "Fundamentos da comunicação, conectividade, roteamento e infraestrutura de redes.",
     whatIs: "Redes de computadores conectam dispositivos e sistemas por meio de protocolos, comunicação e infraestrutura física ou lógica.",
@@ -197,6 +215,36 @@ const ACADEMIC = [
     relation: "Relaciona-se diretamente com roteadores MikroTik, firewalls Fortinet, redes corporativas, Wi-Fi e infraestrutura de conectividade.",
     technologies: ["TCP/IP", "VLAN", "DHCP", "DNS", "NAT", "Firewall", "Cabeamento"],
     theme: "redes"
+  },
+  {
+    id: "seguranca-informacao",
+    title: "Fundamentos de Segurança da Informação",
+    code: "-",
+    area: "Segurança da informação",
+    icon: "SEC",
+    summary: "Princípios de proteção, controle de acesso e redução de riscos em ambientes de TI.",
+    whatIs: "Segurança da informação reúne práticas para proteger dados, sistemas e infraestrutura contra acesso indevido, indisponibilidade e alterações não autorizadas.",
+    concepts: ["Confidencialidade, integridade e disponibilidade", "Identidade e controle de acesso", "Políticas de segurança", "Firewall e segmentação", "Atualizações e gestão de vulnerabilidades", "Cópias de segurança", "Registro e análise de eventos"],
+    practice: "Em um cenário de estudo, esses princípios orientam a revisão de permissões, regras de firewall, segmentação e rotinas de cópia de segurança.",
+    professional: "O tema complementa a atuação em redes e infraestrutura, ajudando a compreender controles que reduzem riscos e preservam a continuidade dos serviços.",
+    relation: "Correlaciona-se a redes, firewalls, governança, monitoramento e proteção de ambientes corporativos.",
+    technologies: ["Firewall", "VLAN", "Controle de acesso", "Backup", "Logs"],
+    theme: "seguranca"
+  },
+  {
+    id: "administracao-servidores",
+    title: "Administração de Servidores",
+    code: "-",
+    area: "Administração de servidores",
+    icon: "SRV",
+    summary: "Conceitos de instalação, configuração e manutenção de serviços de infraestrutura.",
+    whatIs: "A administração de servidores envolve preparar sistemas, configurar serviços, controlar acessos e acompanhar a disponibilidade de recursos computacionais.",
+    concepts: ["Sistemas Linux e Windows Server", "Contas, grupos e permissões", "Serviços DNS e DHCP", "Armazenamento e compartilhamento", "Atualizações e registros de eventos", "Monitoramento e disponibilidade", "Cópias de segurança"],
+    practice: "Em laboratório, esses conceitos podem ser explorados em uma rede isolada, sem representar uma instalação ou serviço em produção.",
+    professional: "Esse tema ajuda a compreender a infraestrutura que oferece serviços de rede e recursos compartilhados a usuários e dispositivos.",
+    relation: "Conecta-se a sistemas operacionais, redes, serviços de diretório, armazenamento e monitoramento.",
+    technologies: ["Linux", "Windows Server", "DNS", "DHCP", "Zabbix"],
+    theme: "servidores"
   }
 ];
 
@@ -214,24 +262,30 @@ const DIAGRAMS = [
 ];
 
 const PROJECTS = [
-  { title: "Topologia de rede corporativa", type: "demo", description: "Demonstração de uma arquitetura em camadas com perímetro, núcleo e acesso.", tags: ["VLAN", "Firewall", "Switches"], diagram: "corp" },
-  { title: "Segmentação de rede em ambiente de saúde", type: "demo", description: "Diagrama conceitual de segmentação para áreas administrativas, assistenciais e servidores.", tags: ["VLAN", "Firewall", "Redes"], diagram: "saude" },
-  { title: "Balanceamento e redundância", type: "demo", description: "Demonstração de distribuição e contingência de conexões.", tags: ["MikroTik", "Links", "Failover"], diagram: "bal" },
-  { title: "Monitoramento de infraestrutura", type: "study", description: "Estudo em andamento sobre acompanhamento de disponibilidade e latência. Os indicadores desta página são simulados.", tags: ["Zabbix", "Observabilidade"], diagram: "monitor" }
+  { title: "Infraestrutura de rede com MikroTik", type: "demo", description: "Arquitetura ilustrativa para borda de rede e distribuição de conectividade.", objective: "Apresentar a relação entre o roteador, as sub-redes e os equipamentos de acesso.", equipment: ["Roteador MikroTik (referência)", "Switch gerenciável", "Estações"], topology: "Internet → roteador → switch → redes locais.", tags: ["RouterOS", "Roteamento", "Switching"], result: "Demonstração visual de uma topologia organizada; não representa implantação real.", diagram: "rot" },
+  { title: "Configuração conceitual de firewall Fortinet", type: "demo", description: "Diagrama de referência para separar Internet, rede interna e zona de servidores.", objective: "Ilustrar a função de políticas de tráfego e segmentação no perímetro.", equipment: ["Firewall FortiGate (referência)", "Switch", "Servidor"], topology: "Internet → firewall → LAN e DMZ.", tags: ["Firewall", "Políticas", "DMZ"], result: "Demonstração conceitual; sem configuração ou ambiente de produção associado.", diagram: "fw" },
+  { title: "Segmentação de rede utilizando VLAN", type: "demo", description: "Exemplo de redes lógicas distintas transportadas por um switch gerenciável.", objective: "Demonstrar como separar grupos e controlar a comunicação entre segmentos.", equipment: ["Switch gerenciável", "Roteador ou firewall", "Dispositivos de cada segmento"], topology: "VLANs de acesso → trunk → roteamento inter-VLAN controlado.", tags: ["VLAN", "Trunk", "Inter-VLAN"], result: "Diagrama conceitual de segmentação; não descreve uma rede instalada.", diagram: "vlan" },
+  { title: "Servidor DHCP e distribuição de endereços IP", type: "demo", description: "Fluxo ilustrativo de concessão de endereços a clientes da rede.", objective: "Explicar a comunicação entre clientes, serviço DHCP e pool de endereços.", equipment: ["Cliente", "Switch", "Servidor ou roteador com DHCP"], topology: "Cliente → switch → serviço DHCP → pool de endereços.", tags: ["DHCP", "IP", "DORA"], result: "Representação didática do fluxo DHCP, sem serviço ativo.", diagram: "dhcp" },
+  { title: "Balanceamento de dois links de internet", type: "demo", description: "Demonstração da topologia com dois provedores conectados ao roteador.", objective: "Visualizar uma arquitetura que distribui tráfego entre duas conexões.", equipment: ["Duas conexões WAN (referência)", "Roteador MikroTik (referência)", "Rede local"], topology: "WAN 1 + WAN 2 → roteador → LAN.", tags: ["MikroTik", "WAN", "Balanceamento"], result: "Diagrama de referência; o resultado depende de configuração e testes em laboratório.", diagram: "bal" },
+  { title: "Redundância de conexão", type: "demo", description: "Caminho alternativo de conectividade em cenário de indisponibilidade do link principal.", objective: "Explicar a ideia de failover entre conexão primária e enlace de contingência.", equipment: ["Dois links WAN (referência)", "Roteador", "Rede local"], topology: "Link primário e link de backup → roteador com failover → LAN.", tags: ["Failover", "Disponibilidade", "Rotas"], result: "Demonstração conceitual, não comprovação de failover implementado.", diagram: "red" },
+  { title: "Rede Wi-Fi Mesh com Deco", type: "demo", description: "Ilustração de uma unidade principal e nós Mesh para ampliar cobertura sem fio.", objective: "Mostrar a relação entre rede principal, pontos Mesh e dispositivos conectados.", equipment: ["TP-Link Deco M5 ou Deco X50 (referência)", "Dispositivos clientes"], topology: "Roteador → unidade principal Mesh ↔ pontos adicionais → clientes.", tags: ["Wi-Fi", "Mesh", "Cobertura"], result: "Representação didática; cobertura real depende do local e da instalação.", diagram: "mesh" },
+  { title: "Controle de banda por dispositivo", type: "study", description: "Estudo conceitual de políticas de qualidade de serviço e limitação de tráfego.", objective: "Relacionar identificação de dispositivos, políticas e priorização de tráfego.", equipment: ["Roteador compatível (referência)", "Switch ou Access Point", "Dispositivos clientes"], topology: "Clientes → ponto de controle → políticas de tráfego → WAN.", tags: ["QoS", "Controle de banda", "Políticas"], result: "Tema de estudo; não indica regra configurada em ambiente profissional.", diagram: "corp" },
+  { title: "Compartilhamento de impressoras em rede", type: "demo", description: "Diagrama de conectividade entre impressoras, estações e rede local.", objective: "Ilustrar os requisitos básicos de comunicação e acesso a uma impressora de rede.", equipment: ["Impressora de rede", "Switch ou Access Point", "Estações"], topology: "Impressora e estações conectadas ao mesmo segmento de rede.", tags: ["Impressoras", "LAN", "Suporte"], result: "Exemplo conceitual; não descreve uma implantação específica.", diagram: "srv" },
+  { title: "Monitoramento de infraestrutura com Zabbix", type: "study", description: "Estudo em andamento sobre disponibilidade, latência e observabilidade; o painel do portfólio usa dados simulados.", objective: "Conhecer conceitos de monitoramento e visualização de métricas de rede.", equipment: ["Zabbix — curso/estudos em andamento", "Equipamentos monitoráveis (referência)"], topology: "Agentes ou SNMP → servidor de monitoramento → painéis e alertas.", tags: ["Zabbix", "Monitoramento", "Estudo em andamento"], result: "O laboratório deverá demonstrar a visualização de métricas; os valores do painel são simulados e o curso permanece em andamento.", diagram: "monitor" }
 ];
 
 const EXPERIENCE = [
-  "Infraestrutura de redes e suporte de TI em UBS, PSF, policlínicas e hospitais.",
-  "Instalação, configuração e manutenção de roteadores, switches e pontos de conectividade.",
-  "Cabeamento estruturado e redes sem fio.",
-  "Instalação, configuração e compartilhamento de impressoras em rede.",
-  "Atuação com equipamentos MikroTik e Fortinet.",
-  "Manutenção de conectividade e organização de infraestrutura.",
-  "Suporte a computadores, impressoras e periféricos."
+  "Atuação em redes e infraestrutura de TI em UBS, PSF, hospitais, policlínicas e contextos administrativos/corporativos.",
+  "Configuração de roteadores e equipamentos MikroTik, Fortinet, switches e pontos de acesso Wi-Fi.",
+  "Implantação, organização e identificação de cabeamento e pontos de rede.",
+  "Configuração e compartilhamento de impressoras em rede.",
+  "Diagnóstico de falhas de conectividade e verificação de comunicação entre equipamentos.",
+  "Suporte técnico relacionado à infraestrutura e apoio em implantações de rede."
 ];
 
 const DOCUMENTS = [
-  { title: "Currículo profissional", description: "PDF do currículo para consulta ou download.", path: "", kind: "CURRÍCULO PDF", action: "Arquivo não disponível", icon: "CV" },
-  { title: "Certificados acadêmicos", description: "Documentos acadêmicos poderão ser adicionados quando disponibilizados.", path: "", kind: "FORMAÇÃO", action: "Documento não disponível", icon: "AC" },
-  { title: "Cursos complementares", description: "Certificados de cursos complementares poderão ser adicionados a esta central.", path: "", kind: "CURSOS", action: "Documento não disponível", icon: "EX" }
+  { title: "Administrando Banco de Dados", description: "Escola Virtual · curso autoinstrucional · 15 horas · concluído em 05/09/2026.", path: "assets/certificates/administrando-banco-de-dados.pdf", kind: "CERTIFICADO · 15 H", action: "Visualizar ou baixar", icon: "PDF" },
+  { title: "Comunicação Empresarial", description: "Escola Virtual · curso autoinstrucional · 12 horas · concluído em 05/09/2026.", path: "assets/certificates/certificado-de-conclusao.pdf", kind: "CERTIFICADO · 12 H", action: "Visualizar ou baixar", icon: "PDF" },
+  { title: "Microsoft Word 2016 — Básico", description: "Escola Virtual · curso autoinstrucional · 9 horas · concluído em 05/09/2026.", path: "assets/certificates/microsoft-word-2016-basico.pdf", kind: "CERTIFICADO · 9 H", action: "Visualizar ou baixar", icon: "PDF" },
+  { title: "Currículo profissional", description: "O PDF do currículo ainda não foi fornecido.", path: "", kind: "CURRÍCULO PDF", action: "Arquivo não disponível", icon: "CV" }
 ];
