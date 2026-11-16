@@ -1,19 +1,28 @@
-# Portfólio — Daniel Lopes Soares
+# NEXUS TECH — Daniel Lopes Soares
 
-Site estático em HTML, CSS e JavaScript, preparado para publicação no GitHub Pages.
+Portfólio profissional estático em HTML5, CSS3 e JavaScript, pronto para publicação no GitHub Pages sem etapa de build.
 
-## Antes de publicar
-1. Abra `index.html`.
-2. Troque `SEU-EMAIL-AQUI` pelo e-mail profissional.
-3. Adicione um link de WhatsApp e LinkedIn, se quiser.
-4. Personalize a seção Projetos com exemplos reais e imagens sem dados confidenciais.
-5. Confira se as descrições representam suas experiências e serviços reais.
+## Arquivos
 
-## Publicar no GitHub Pages
-1. Entre em https://github.com e crie um repositório chamado `danielvl33.github.io` (ou use um repositório de projeto existente).
-2. Envie `index.html`, `style.css`, `script.js` e este `README.md` para a raiz do repositório.
-3. No repositório, abra **Settings → Pages**.
-4. Em **Build and deployment**, selecione **Deploy from a branch**, escolha `main` e `/ (root)` e salve.
-5. Aguarde a publicação e abra `https://danielvl33.github.io/`.
+- `index.html`: conteúdo, navegação e metadados.
+- `style.css`: identidade visual responsiva, movimento reduzido e estados de foco.
+- `data.js`: perfil, competências, equipamentos, temas acadêmicos, diagramas, experiência e documentos.
+- `script.js`: filtros, diagramas ampliáveis, monitor de demonstração e QR Code criado localmente.
+- `assets/`: marca, logo institucional e fotografias de referência fornecidas pelo proprietário.
 
-Se você já usa o repositório `danielvl33.github.io` para outro site, faça backup antes de substituir os arquivos.
+## Integridade do conteúdo
+
+- As imagens em `assets/reference/` são referências visuais fornecidas, não fotos de equipamentos pessoais nem comprovação de experiência prática. Cada cartão descreve as limitações da imagem.
+- Todos os valores do NEXUS MONITOR são gerados no navegador para demonstração; não representam uma rede real.
+- Os cinco temas em `ACADEMIC` são correlatos e não afirmam vínculo com o currículo oficial.
+- Projetos aparecem como demonstrações ou estudos; nenhum resultado foi inventado.
+- WhatsApp e e-mail são os contatos oficiais informados; o perfil GitHub existente no projeto também é mantido. O QR Code é gerado localmente e não consulta serviços externos.
+- Currículo e certificados ficam indisponíveis até que PDFs reais sejam adicionados ao projeto.
+
+## Atualização de conteúdo
+
+Edite os dados em `data.js`. Para disponibilizar o currículo, adicione o PDF em `assets/curriculo-daniel-soares.pdf` e informe o caminho em `PERFIL.curriculo` e na entrada de currículo em `DOCUMENTS`. Para cada certificado, inclua o PDF e adicione uma entrada com título e caminho em `DOCUMENTS`.
+
+## Publicação no GitHub Pages
+
+Publique o conteúdo desta pasta na raiz do repositório desejado e selecione **Settings → Pages → Deploy from a branch → `main` → `/(root)`**. O site não depende de servidor nem de ferramentas de build.
